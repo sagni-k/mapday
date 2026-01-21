@@ -79,6 +79,10 @@ A short demo walkthrough showcasing:
 - Current task detection
 - 24-hour timeline visualization
 
+
+https://github.com/user-attachments/assets/c3c5dcd9-e7c9-4dcd-9be1-90b3730a670b
+
+
 ▶️ **Demo Video**  
 https://drive.google.com/file/d/1cKQQwfibn78DmSS4u5QKfvK_gW9XJqfo/view?usp=drivesdk
 
