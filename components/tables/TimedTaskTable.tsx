@@ -1,3 +1,7 @@
+// /components/tables
+// TimedTaskTable.tsx
+
+
 import { TimedTask } from "@/types/task";
 import { useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
@@ -87,6 +91,11 @@ export function TimedTaskTable(
                 <Pressable
                     style={styles.createButton}
                     onPress={() => {
+                        if(taskName===""){
+                            alert("Task name can't be empty");
+                            return;
+                        }
+
                         if(startMinutes === null || endMinutes === null){
                             alert("startTime and endTime can't be empty")
                             return;

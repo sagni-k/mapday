@@ -1,5 +1,8 @@
+// /app/(tabs)
+// index.tsx
+
 import { useEffect, useState } from 'react';
-import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 
 import { connect_db } from '@/db/database';
 import { create_TimedTask_row_in_db, delete_TimedTask_row_in_db, read_TimedTasks_from_db, update_TimedTask_row_in_db } from '@/db/timedtasks';
@@ -8,6 +11,10 @@ import { TimedTask, UnTimedTask } from '@/types/task';
 
 import { TimedTaskTable } from '@/components/tables/TimedTaskTable';
 import { UnTimedTaskTable } from '@/components/tables/UnTimedTaskTable';
+
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function Index(){
     const [loading, setLoading] = useState(true);
@@ -69,33 +76,40 @@ export default function Index(){
         </View>
     );
 
-    return(
-        <View style={styles.container}>
-            <StatusBar barStyle="dark-content" />
-            <ScrollView 
-                style={styles.scrollView}
-                contentContainerStyle={styles.scrollContent}
-                showsVerticalScrollIndicator={false}>
-                
-                <View style={styles.header}>
-                    <Text style={styles.headerTitle}>My Tasks</Text>
-                    <Text style={styles.headerSubtitle}>Manage your daily schedule</Text>
-                </View>
+    return (
+    <SafeAreaView style={styles.container} edges={['top']}>
+        <StatusBar barStyle="dark-content" />
+        <KeyboardAwareScrollView
+            style={styles.scrollView}
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}
+            enableOnAndroid
+            keyboardShouldPersistTaps="handled"
+            extraScrollHeight={20}
+        >
 
-                <TimedTaskTable
-                    allTimedTasks={allTimedTasks}
-                    handle_create_TimedTask={handle_create_TimedTask}
-                    handle_update_TimedTask={handle_update_TimedTask}
-                    handle_delete_TimedTask={handle_delete_TimedTask}/>
+            <View style={styles.header}>
+                <Text style={styles.headerTitle}>My Tasks</Text>
+                <Text style={styles.headerSubtitle}>Manage your daily schedule</Text>
+            </View>
 
-                <UnTimedTaskTable
-                    allUnTimedTasks={allUnTimedTasks}
-                    handle_create_UnTimedTask={handle_create_UnTimedTask}
-                    handle_update_UnTimedTask={handle_update_UnTimedTask}
-                    handle_delete_UnTimedTask={handle_delete_UnTimedTask}/>
-            </ScrollView>
-        </View>
-    );
+            <TimedTaskTable
+                allTimedTasks={allTimedTasks}
+                handle_create_TimedTask={handle_create_TimedTask}
+                handle_update_TimedTask={handle_update_TimedTask}
+                handle_delete_TimedTask={handle_delete_TimedTask}
+            />
+
+            <UnTimedTaskTable
+                allUnTimedTasks={allUnTimedTasks}
+                handle_create_UnTimedTask={handle_create_UnTimedTask}
+                handle_update_UnTimedTask={handle_update_UnTimedTask}
+                handle_delete_UnTimedTask={handle_delete_UnTimedTask}
+            />
+        </KeyboardAwareScrollView>
+    </SafeAreaView>
+);
+
 }
 
 const styles = StyleSheet.create({
