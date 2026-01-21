@@ -59,17 +59,17 @@ rather than long-term task tracking or productivity metrics.
 
 
 ### Home & Task Management
-<img src="screenshots/home.jpeg" alt="Home Screen" width="300" />
+<img src="screenshots/home.jpeg" alt="Home Screen" width="200" />
 
 
 
 
 
 ### Current Task Detection
-<img src="screenshots/current-task.jpeg" alt="Current Task" width="300" />
+<img src="screenshots/current-task.jpeg" alt="Current Task" width="200" />
 
 ### 24-Hour Timeline View
-<img src="screenshots/timeline.jpeg" alt="Timeline" width="300" />
+<img src="screenshots/timeline.jpeg" alt="Timeline" width="200" />
 
 
 ## Demo Video
